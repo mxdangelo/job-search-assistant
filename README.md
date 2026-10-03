@@ -54,6 +54,27 @@ On Linux and macOS use `python` instead of `py`. Then change "96,000" to "120,00
 `unconfirmed`, so the posting's backlink requirement stays uncovered even though a file
 mentions it.
 
+## Start your own
+
+```
+py -m jobsearch.init ~/my-jobsearch        # folders, cv.yaml from a few questions
+cd ~/my-jobsearch
+py -m jobsearch.intake cv old-cv.pdf       # prompt: split an old CV into fact files
+py -m jobsearch.check                      # what each fact still lacks
+py -m jobsearch.intake interview           # prompt: a chat that fills the gaps
+```
+
+`intake cv` reads PDF, Word or text. Everything an old CV says enters as `stated`: a CV
+is a claim, not a source. What the model infers enters as `unconfirmed` and stays out of
+every CV until you confirm it.
+
+`intake interview` writes a prompt for a chat that asks one question at a time and writes
+the fact files as you answer. It starts from what `check` finds weak, from the time
+between jobs no fact covers, and from what came after the latest job in the base: an old
+CV is always out of date. With an empty base it starts from your most recent job. The
+questions are fixed by the engine: company and what it does, role, period, what changed,
+the number and where it comes from, whom you reported to, what must never be printed.
+
 ## Your data
 
 The engine holds no person. Commands run from a data folder, or from anywhere with

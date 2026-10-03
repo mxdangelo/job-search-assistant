@@ -15,7 +15,7 @@ build-backend = "setuptools.build_meta"
 packages = ["jobsearch"]
 
 [tool.setuptools.package-data]
-jobsearch = ["layout/*/*"]
+jobsearch = ["layout/*/*", "templates/*"]
 
 [tool.ruff]
 line-length = 99
