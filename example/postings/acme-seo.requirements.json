@@ -1,0 +1,10 @@
+{"requirements": [
+ {"text": "4+ years of SEO experience", "kind": "required", "central": true, "terms": [], "years": 4, "area": "SEO", "language": null, "equivalents": []},
+ {"text": "Technical SEO: crawling, indexation, redirects, XML sitemaps, structured data", "kind": "required", "central": true, "terms": ["crawling", "indexation", "redirects", "XML sitemaps", "structured data"], "years": null, "area": null, "language": null, "equivalents": []},
+ {"text": "Ahrefs, Screaming Frog, Google Search Console, GA4", "kind": "required", "central": true, "terms": ["Ahrefs", "Screaming Frog", "Search Console", "GA4"], "years": null, "area": null, "language": null, "equivalents": []},
+ {"text": "Experience with a site migration", "kind": "required", "central": false, "terms": ["migration"], "years": null, "area": null, "language": null, "equivalents": []},
+ {"text": "Backlink audits: toxic and lost links", "kind": "required", "central": false, "terms": ["backlink", "toxic"], "years": null, "area": null, "language": null, "equivalents": []},
+ {"text": "English C1", "kind": "required", "central": false, "terms": [], "years": null, "area": null, "language": "English", "equivalents": []},
+ {"text": "Python for SEO automation", "kind": "plus", "central": false, "terms": ["Python"], "years": null, "area": null, "language": null, "equivalents": []},
+ {"text": "Looker Studio dashboards", "kind": "plus", "central": false, "terms": ["Looker Studio"], "years": null, "area": null, "language": null, "equivalents": []}
+]}

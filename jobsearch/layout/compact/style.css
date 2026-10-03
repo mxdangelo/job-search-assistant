@@ -1,0 +1,29 @@
+/* compact — sober and dense: one font family, no colour, tight margins.
+   Added on top of classic, it fixes only the parts that change. */
+:root {
+  --paper:   #ffffff;
+  --ink:    #111111;
+  --muted:   #555555;
+  --rule:    #cccccc;
+  --accent: #111111;
+}
+
+@page { size: A4; margin: 10mm 13mm; }
+
+body { font: 9.1pt/1.36 "Segoe UI", system-ui, sans-serif; }
+
+header { border-bottom: 1px solid var(--ink); padding-bottom: 1.8mm; margin-bottom: 2.2mm; }
+h1 { font-family: inherit; font-size: 16pt; font-weight: 700; letter-spacing: 0; display: inline; }
+.role { display: inline; margin: 0 0 0 3mm; color: var(--muted); font-size: 10pt; font-weight: 500; }
+.contacts { margin-top: 1mm; font-size: 8.2pt; }
+.summary { margin-top: 2mm; font-size: 9.1pt; line-height: 1.4; max-width: none; }
+
+section { margin-top: 2.6mm; }
+h2 { color: var(--ink); border-bottom: none; padding: 0; margin-bottom: 1.6mm;
+     font-size: 8.4pt; letter-spacing: 0.6pt; }
+
+.entry { grid-template-columns: 21mm 1fr; gap: 0 3.5mm; margin-bottom: 1.8mm; }
+.what { font-size: 9.2pt; }
+.where { margin: 0 0 0.6mm; font-size: 8.4pt; }
+li { margin-bottom: 0.3mm; }
+li::marker { color: var(--muted); }

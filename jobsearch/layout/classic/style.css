@@ -1,0 +1,115 @@
+/* Palette. Two options, one active: swap the :root block and that is all. */
+
+/* --- ink (active) --- */
+:root {
+  --paper:   #fffdfa;
+  --ink:    #171614;
+  --muted:   #6d6862;
+  --rule:    #ddd8d0;
+  --accent: #7c2d2d;   /* dark brick */
+}
+
+/* --- night (alternative) ---
+:root {
+  --paper:   #fdfdfc;
+  --ink:    #14181d;
+  --muted:   #666e78;
+  --rule:    #d8dde3;
+  --accent: #1f3a5f;
+}
+*/
+
+@page { size: A4; margin: 12mm 15mm; }
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 9.6pt/1.42 "Inter", "Segoe UI", system-ui, sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.sheet { max-width: 180mm; margin: 0 auto; padding: 0 0 4mm; }
+
+/* --- header --- */
+header { border-bottom: 2px solid var(--ink); padding-bottom: 2.5mm; margin-bottom: 3mm; }
+
+h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21pt;
+  font-weight: 600;
+  letter-spacing: -0.2pt;
+}
+
+.role {
+  margin: 1mm 0 2.5mm;
+  color: var(--accent);
+  font-size: 10.5pt;
+  font-weight: 600;
+  letter-spacing: 0.3pt;
+}
+
+.contacts { color: var(--muted); font-size: 8.4pt; }
+.contacts span::after { content: "  ·  "; color: var(--rule); }
+.contacts span:last-child::after { content: ""; }
+
+.summary { margin: 3.5mm 0 0; font-size: 9.8pt; line-height: 1.5; max-width: 165mm; }
+
+/* --- sections --- */
+section { margin-top: 3.6mm; }
+
+/* A heading does not stay at the bottom of the page without its first entry. */
+h2 {
+  break-after: avoid;
+  margin: 0 0 2.5mm;
+  padding-bottom: 1mm;
+  border-bottom: 1px solid var(--rule);
+  color: var(--accent);
+  font-size: 7.8pt;
+  font-weight: 700;
+  letter-spacing: 1.4pt;
+  text-transform: uppercase;
+}
+
+/* --- an entry: dates on the left, substance on the right --- */
+/* An experience does not break across two pages: the title at the bottom of the first,
+   cut off from its lines, reads as a layout error. */
+.entry { display: grid; grid-template-columns: 27mm 1fr; gap: 0 5mm; margin-bottom: 2.7mm;
+        break-inside: avoid; }
+.entry:last-child { margin-bottom: 0; }
+
+.when {
+  color: var(--muted);
+  font-size: 8.3pt;
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.6mm;
+}
+
+.compact { margin-bottom: 1.2mm; font-size: 9pt; }
+.compact b { font-weight: 650; }
+
+.what { margin: 0; font-size: 9.7pt; font-weight: 650; }
+.where { color: var(--muted); font-size: 8.6pt; margin: 0.4mm 0 1mm; }
+
+ul { margin: 0; padding-left: 3.6mm; }
+li { margin-bottom: 0.7mm; }
+li::marker { color: var(--rule); }
+
+.note { color: var(--muted); font-size: 8.3pt; }
+
+/* --- skills --- */
+.skills { display: grid; grid-template-columns: 1fr 1fr; gap: 1mm 6mm; }
+.group { font-size: 9pt; }
+.group b { font-weight: 650; }
+.group span { color: var(--muted); }
+
+/* --- skills first: a band, not a section --- */
+.band { margin-top: 3mm; }
+.band .skills { grid-template-columns: 1fr 1fr 1fr; gap: 0.8mm 5mm; }
+.band .group { font-size: 8.6pt; }
+/* --- a hyphenated word does not wrap: the ATS would read "e- commerce" --- */
+.whole { white-space: nowrap; }

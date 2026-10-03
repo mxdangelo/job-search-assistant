@@ -1,0 +1,21 @@
+[project]
+name = "job-search-assistant"
+version = "0.1.0"
+description = "Job posting in, tailored CV out: an LLM selects from a verified fact base, deterministic checks block anything it cannot trace."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["pyyaml", "jinja2", "markupsafe", "pypdf"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["jobsearch"]
+
+[tool.setuptools.package-data]
+jobsearch = ["layout/*/*"]
+
+[tool.ruff]
+line-length = 99

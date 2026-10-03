@@ -1,0 +1,30 @@
+{
+  "profile": "acme-seo",
+  "language": "en",
+  "max_pages": 1,
+  "title": "SEO Specialist — technical SEO and site migrations",
+  "summary": "SEO specialist since 2020, in-house on a travel marketplace with about 4,000 pages: technical SEO, crawl budget and a CMS migration with no traffic loss. Organic clicks from 41,000 to 96,000 a month.",
+  "experience": [
+    {"fact": "experience/northwind", "role": "SEO Specialist (in-house)", "org": "Northwind Travel — travel booking site", "location": "Turin", "period": "03/2020 — present",
+     "lines": ["Organic clicks from 41,000 to 96,000 a month, January 2024 against January 2026.",
+               "CMS migration with the developers, redirects mapped page by page: no traffic loss.",
+               "Crawl budget: 1,200 thin pages merged or removed, XML sitemaps rebuilt."]},
+    {"fact": "experience/brightpath", "role": "Content writer (freelance)", "org": "Brightpath — B2B software clients", "location": "remote", "period": "09/2017 — 02/2020",
+     "lines": ["Articles and landing pages for B2B software, from keyword research to brief."]}
+  ],
+  "projects": [],
+  "skills": [
+    {"group": "Technical SEO", "items": ["crawling", "indexation", "canonical tags", "redirects", "XML sitemaps", "structured data", "site migrations"]},
+    {"group": "Tools", "items": ["Ahrefs", "Screaming Frog", "Google Search Console", "GA4", "Looker Studio", "WordPress"]}
+  ],
+  "education": [{"title": "BA in Communication", "institution": "University of Turin", "period": "2017"}],
+  "languages": ["Italian — native", "English — C1"],
+  "coverage": [
+    {"requirement": "4+ years of SEO", "evidence": "experience/northwind (03/2020 – present)"},
+    {"requirement": "technical SEO", "evidence": "experience/northwind, tools"},
+    {"requirement": "site migration", "evidence": "experience/northwind"},
+    {"requirement": "backlink audits", "evidence": "uncovered: projects/link-audit is unconfirmed"},
+    {"requirement": "English C1", "evidence": "education/languages"}
+  ],
+  "excluded": [{"fact": "projects/link-audit", "reason": "unconfirmed: nobody has checked the repo"}]
+}

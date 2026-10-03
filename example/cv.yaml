@@ -1,0 +1,35 @@
+# Everything the engine reads from the data folder instead of hard-coding it.
+
+header:
+  name: Alex Moretti
+  contacts:
+    - alex.moretti@example.com
+    - +39 000 0000000
+    - linkedin.com/in/example
+    - Turin
+
+layout: classic
+
+# Where the repos live that facts measure from (`repo:` in a fact's front matter).
+dev: ..
+
+# Internal jargon from the fact base that must never reach a CV.
+jargon:
+  - the engine
+  - house style
+
+proper_nouns: []
+
+# A word that must appear when the title contains another.
+expected_words:
+  - if_title: seo
+    word: technical SEO
+    reason: the core of every SEO posting this candidate targets
+
+# Career start dates, to count the years a posting asks for.
+career:
+  SEO: 2020-03
+  content: 2017-09
+
+# The language the fact base is written in: postings are matched through it.
+facts_language: English

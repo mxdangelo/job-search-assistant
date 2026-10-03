@@ -1,0 +1,103 @@
+<!doctype html>
+{#- The headings are the only part of the template that changes with the language. #}
+{%- set H = {
+  'it': {'experience': 'Esperienza professionale', 'projects': 'Progetti',
+         'skills': 'Competenze', 'education': 'Formazione', 'languages': 'Lingue'},
+  'en': {'experience': 'Professional experience', 'projects': 'Projects',
+         'skills': 'Skills', 'education': 'Education', 'languages': 'Languages'}
+}[p.language] -%}
+<html lang="{{ p.language }}">
+<head>
+<meta charset="utf-8">
+<title>{{ page_title }}</title>
+<style>{{ style }}</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header>
+    <h1>{{ person.name }}</h1>
+    <p class="role">{{ p.title }}</p>
+    <div class="contacts">
+      {% for c in person.contacts %}<span>{{ c }}</span>{% endfor %}
+    </div>
+    <p class="summary">{{ p.summary | whole }}</p>
+  </header>
+
+{% macro experience_section() %}
+  <section>
+    <h2>{{ H.experience }}</h2>
+    {% for v in p.experience %}
+    <div class="entry{% if not v.lines %} compact{% endif %}">
+      <div class="when">{{ v.period }}</div>
+      <div>
+        {%- if v.lines %}
+        <p class="what">{{ v.role }}</p>
+        <p class="where">{{ v.org }}{% if v.location %} · {{ v.location }}{% endif %}</p>
+        <ul>{% for r in v.lines %}<li>{{ r | whole }}</li>{% endfor %}</ul>
+        {%- else %}
+        {#- compressed experience: closes the chronology gap without spending lines #}
+        <p class="what">{{ v.role }} <span class="note">{{ v.org }}{% if v.location %} · {{ v.location }}{% endif %}</span></p>
+        {%- endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+{% endmacro %}
+{% macro projects_section() %}
+  {% if p.projects %}
+  <section>
+    <h2>{{ H.projects }}</h2>
+    {% for g in p.projects %}
+    <div class="entry">
+      <div class="when">{{ g.period }}</div>
+      <div>
+        <p class="what">{{ g.name | whole }}{% if g.url %} <span class="note">— {{ g.url | whole }}</span>{% endif %}</p>
+        <ul>{% for r in g.lines %}<li>{{ r | whole }}</li>{% endfor %}</ul>
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+{% endmacro %}
+
+{% macro skills_section() %}
+  <section{% if p.skills_first %} class="band"{% endif %}>
+    <h2>{{ H.skills }}</h2>
+    <div class="skills">
+      {% for c in p.skills %}
+      <div class="group"><b>{{ c.group }}</b> <span>{{ c['items'] | join(' · ') | whole }}</span>&nbsp;</div>
+      {% endfor %}
+    </div>
+  </section>
+{% endmacro %}
+
+  {#- where the stack is the qualification, skills are read first, not at the bottom #}
+  {% if p.skills_first %}{{ skills_section() }}{% endif %}
+
+  {#- where projects are the evidence and roles the frame, they swap #}
+  {% if p.projects_first %}{{ projects_section() }}{{ experience_section() }}
+  {% else %}{{ experience_section() }}{{ projects_section() }}{% endif %}
+
+  {% if not p.skills_first %}{{ skills_section() }}{% endif %}
+
+
+  <section>
+    <h2>{{ H.education }}</h2>
+    {% for f in p.education %}
+    <div class="entry compact">
+      <div class="when">{{ f.period }}</div>
+      <div><b>{{ f.title }}</b> <span class="note">{{ f.institution }}</span></div>
+    </div>
+    {% endfor %}
+    {%- if p.languages %}
+    <div class="entry compact">
+      <div class="when">{{ H.languages }}</div>
+      <div>{{ p.languages | join(' · ') }}</div>
+    </div>
+    {%- endif %}
+  </section>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+/* modern — one column, so safe for the ATS, but with a colour-band header and marked
+   section headings. Added on top of classic. */
+:root {
+  --paper:   #ffffff;
+  --ink:    #1b1f24;
+  --muted:   #5f6b76;
+  --rule:    #dfe5ea;
+  --accent: #0f5c63;   /* petrol */
+  --band-bg:  #eef5f5;
+}
+
+@page { size: A4; margin: 0 0 12mm; }
+@page :first { margin-top: 0; }
+
+body { font: 9.5pt/1.45 "Segoe UI", system-ui, sans-serif; }
+.sheet { max-width: none; padding: 0 15mm 4mm; }
+
+header {
+  margin: 0 -15mm 4mm;
+  padding: 9mm 15mm 5mm;
+  background: var(--band-bg);
+  border-bottom: 3px solid var(--accent);
+}
+h1 { font-family: inherit; font-size: 24pt; font-weight: 700; letter-spacing: -0.5pt; color: var(--accent); }
+.role { color: var(--ink); font-size: 11pt; font-weight: 600; letter-spacing: 0; }
+
+h2 {
+  display: table;   /* a block as wide as the text: break-after applies to blocks only */
+  border: none;
+  padding: 0.6mm 2.4mm;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 8pt;
+  letter-spacing: 1.2pt;
+  border-radius: 1mm;
+}
+
+.when { color: var(--accent); font-weight: 600; }
+li::marker { color: var(--accent); }
+.group b { color: var(--accent); }

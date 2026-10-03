@@ -1,0 +1,28 @@
+/* two columns — a sidebar with contacts, skills, education and languages; on the right
+   summary, experience and projects. The best to look at and the riskiest for the ATS:
+   many parsers read the columns scrambled. The gate checks it. */
+:root {
+  --paper:   #ffffff;
+  --ink:    #1c1b1a;
+  --muted:   #6a6560;
+  --rule:    #e2ddd6;
+  --accent: #7c2d2d;
+  --sidebar-bg:   #f4f1ec;
+}
+
+@page { size: A4; margin: 11mm 12mm; }
+.sheet { max-width: none; }
+
+header { border-bottom: 2px solid var(--ink); }
+
+.columns { display: grid; grid-template-columns: 56mm 1fr; gap: 0 6mm; }
+.sidebar { background: var(--sidebar-bg); padding: 3mm 3.5mm; align-self: start; }
+.sidebar section:first-child { margin-top: 0; }
+.sidebar .contacts span { display: block; }
+.sidebar .contacts span::after { content: ""; }
+.sidebar .skills { grid-template-columns: 1fr; }
+.sidebar .group b { display: block; color: var(--accent); }
+.sidebar .entry { grid-template-columns: 1fr; }
+.sidebar .when { padding-top: 0; }
+
+.main-column .entry { grid-template-columns: 22mm 1fr; gap: 0 4mm; }

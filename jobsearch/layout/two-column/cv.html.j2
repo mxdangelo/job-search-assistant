@@ -1,0 +1,88 @@
+<!doctype html>
+{#- Draft: if the layout stays, the sections get shared with the classic one. #}
+{%- set H = {
+  'it': {'experience': 'Esperienza professionale', 'projects': 'Progetti', 'contacts': 'Contatti',
+         'skills': 'Competenze', 'education': 'Formazione', 'languages': 'Lingue'},
+  'en': {'experience': 'Professional experience', 'projects': 'Projects', 'contacts': 'Contact',
+         'skills': 'Skills', 'education': 'Education', 'languages': 'Languages'}
+}[p.language] -%}
+<html lang="{{ p.language }}">
+<head>
+<meta charset="utf-8">
+<title>{{ page_title }}</title>
+<style>{{ style }}</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header>
+    <h1>{{ person.name }}</h1>
+    <p class="role">{{ p.title }}</p>
+  </header>
+
+  <div class="columns">
+    <aside class="sidebar">
+      <section>
+        <h2>{{ H.contacts }}</h2>
+        <div class="contacts">{% for c in person.contacts %}<span>{{ c }}</span>{% endfor %}</div>
+      </section>
+      <section>
+        <h2>{{ H.skills }}</h2>
+        <div class="skills">
+          {% for c in p.skills %}
+          <div class="group"><b>{{ c.group }}</b> <span>{{ c['items'] | join(' · ') | whole }}</span></div>
+          {% endfor %}
+        </div>
+      </section>
+      <section>
+        <h2>{{ H.education }}</h2>
+        {% for f in p.education %}
+        <div class="entry compact">
+          <div class="when">{{ f.period }}</div>
+          <div><b>{{ f.title }}</b> <span class="note">{{ f.institution }}</span></div>
+        </div>
+        {% endfor %}
+      </section>
+      {% if p.languages %}
+      <section>
+        <h2>{{ H.languages }}</h2>
+        {% for l in p.languages %}<div class="group">{{ l }}</div>{% endfor %}
+      </section>
+      {% endif %}
+    </aside>
+
+    <main class="main-column">
+      <p class="summary">{{ p.summary | whole }}</p>
+      <section>
+        <h2>{{ H.experience }}</h2>
+        {% for v in p.experience %}
+        <div class="entry{% if not v.lines %} compact{% endif %}">
+          <div class="when">{{ v.period }}</div>
+          <div>
+            <p class="what">{{ v.role }}</p>
+            <p class="where">{{ v.org }}{% if v.location %} · {{ v.location }}{% endif %}</p>
+            {% if v.lines %}<ul>{% for r in v.lines %}<li>{{ r | whole }}</li>{% endfor %}</ul>{% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </section>
+      {% if p.projects %}
+      <section>
+        <h2>{{ H.projects }}</h2>
+        {% for g in p.projects %}
+        <div class="entry">
+          <div class="when">{{ g.period }}</div>
+          <div>
+            <p class="what">{{ g.name | whole }}{% if g.url %} <span class="note">— {{ g.url | whole }}</span>{% endif %}</p>
+            <ul>{% for r in g.lines %}<li>{{ r | whole }}</li>{% endfor %}</ul>
+          </div>
+        </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+    </main>
+  </div>
+
+</div>
+</body>
+</html>
